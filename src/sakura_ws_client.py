@@ -5,6 +5,9 @@ import os
 import json
 from typing import Optional, Set, Dict, Any
 
+import logging
+logging.basicConfig(level=logging.DEBUG)
+
 class SakuraWSClient:
     def __init__(self, local_url: str, worker_url: str, token: Optional[str] = None):
         print(f"[WS] 初始化WebSocket客户端: local_url={local_url}, worker_url={worker_url}, token={'有token' if token else '无token'}")
