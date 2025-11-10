@@ -96,6 +96,8 @@ class SakuraWSClient:
                                         )
                                         self.tasks.add(task)
                                         task.add_done_callback(self.tasks.discard)
+                                elif msg.type == aiohttp.WSMsgType.ERROR:
+                                    print(f"[WS] 连接错误：{msg}")
                         except asyncio.CancelledError:
                             print("[WS] 连接被主动取消")
                             break
