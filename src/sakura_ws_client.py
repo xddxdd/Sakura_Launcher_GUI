@@ -110,8 +110,10 @@ class SakuraWSClient:
                 break
             except Exception as e:
                 if not self.is_closing:
-                    print(f"[WS] 连接错误: {e}, 5秒后重试...")
+                    print(f"[WS] 连接错误: {e}")
                     await asyncio.sleep(5)
                 else:
                     break
                 
+            print("[WS] 等待 60 秒以让现有任务清空")
+            await asyncio.sleep(60)

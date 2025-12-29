@@ -65,17 +65,13 @@ async def start_sharing(api: SakuraShareAPI, tg_token: str):
         print(f"启动失败: {str(e)}")
     finally:
         print("正在停止分享...")
-        api.stop()
-        await api.take_node_offline()
+        await api.stop()
         print("已成功停止分享")
 
 async def stop_sharing(api: SakuraShareAPI):
     try:
-        api.stop()
-        if await api.take_node_offline():
-            print("已停止分享")
-        else:
-            print("停止分享失败")
+        await api.stop()
+        print("已停止分享")
     except Exception as e:
         print(f"停止分享时发生错误: {str(e)}")
 
